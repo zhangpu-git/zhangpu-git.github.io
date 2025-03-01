@@ -3,7 +3,9 @@
   <entry>
     <title>Hello World</title>
     <url>/2025/03/01/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very
+    <content><![CDATA[<p>Hello World TEST</p>
+<span id="more"></span>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very
 first post. Check <a href="https://hexo.io/docs/">documentation</a> for
 more info. If you get any problems when using Hexo, you can find the
 answer in <a
