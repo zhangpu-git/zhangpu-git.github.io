@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/03/01/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very
+first post. Check <a href="https://hexo.io/docs/">documentation</a> for
+more info. If you get any problems when using Hexo, you can find the
+answer in <a
+href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
+you can ask me on <a
+href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a
+href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a
+href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a
+href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2025/03/01/test/</url>
+    <content><![CDATA[<p>摘要</p>
+<span id="more"></span>
+<h1 id="floquet-理论">Floquet 理论</h1>
+<p>周期性驱动系统的哈密顿量可写作</p>
+<p><span class="math display">\[
+H(t+T)=H(t)\qquad(T=2π/Ω)
+\]</span></p>
+<p>薛定谔方程为</p>
+<p><span class="math display">\[
+i\hbar\frac{d}{dt}|\psi(t)\rangle = H(t)|\psi(t)\rangle
+\]</span></p>
+<p>根据 Floquet 定理，系统的解可以写为</p>
+<p><span class="math display">\[
+|\psi(t)\rangle=e^{-i\epsilon t/\hbar}|u(t)\rangle,
+\]</span></p>
+<p>其中 <span class="math inline">\(∣u(t)⟩\)</span> 满足周期性条件<span
+class="math inline">\(|u(t+T)\rangle=|u(t)\rangle\)</span></p>
+<p>将上式代入薛定谔方程</p>
+<p><span class="math display">\[
+\begin{align}
+i\hbar\frac{d}{dt}(e^{-i\epsilon
+t/\hbar}|u(t)\rangle)&amp;=H(t)e^{-i\epsilon t/\hbar}|u(t)\rangle\\\\
+e^{-i\epsilon t/\hbar}[-\epsilon|u(t)\rangle +
+i\hbar\frac{d}{dt}|u(t)\rangle]&amp;=H(t)e^{-i\epsilon
+t/\hbar}|u(t)\rangle
+\end{align}
+\]</span></p>
+<p>两边去掉<span class="math inline">\(e^{-i\epsilon
+t/\hbar}\)</span>得到</p>
+<p><span class="math display">\[
+\left[H(t)-i\hbar\frac{d}{dt}\right]|u(t)\rangle=\epsilon|u(t)\rangle
+\]</span></p>
+<p>这就是 Floquet 本征值问题，其中<span
+class="math inline">\(\mathcal{H}_F\equiv
+H(t)-i\hbar\frac{d}{dt}\)</span>称为Floquet哈密顿量， <span
+class="math inline">\(\epsilon\)</span>被称为准能量。</p>
+<h1 id="fourier-展开">Fourier 展开</h1>
+<p>由于<span
+class="math inline">\(|u(t)\rangle\)</span>为周期性函数，可以展开为傅里叶级数：</p>
+<p><span class="math display">\[
+|u(t)\rangle = \sum_{n = -\infty}^{+\infty} e^{-in\Omega t}|u_n\rangle,
+\quad \Omega = \frac{2\pi}{T}
+\]</span></p>
+<p>同理，<span class="math inline">\(H(t)=\sum_{m = -\infty}^{+\infty}
+e^{-im\Omega t}H_m\)</span>。代入本征值方程，</p>
+<p><span class="math display">\[
+\sum_{m,n} e^{-i(m + n)\Omega t}(H_m -
+n\hbar\Omega\delta_{m,0})|u_n\rangle=\epsilon\sum_{n} e^{-in\Omega
+t}|u_n\rangle
+\]</span></p>
+<p>对每个谐波分量比较系数，得到无限维矩阵本征值问题：</p>
+<p><span class="math display">\[
+\sum_{n}(H_{m -
+n}+n\hbar\Omega\delta_{m,n})|u_n\rangle=\epsilon|u_m\rangle
+\]</span></p>
+<p>这一形式在数值上通常截断为有限矩阵后求解，即可获得系统的 Floquet
+本征态和准能量谱。</p>
+<h1 id="floquetmagnus-展开">Floquet–Magnus 展开</h1>
+<p>假设在时刻<span
+class="math inline">\(t=0\)</span> 我们已知系统状态<span
+class="math inline">\(|\psi(0)\rangle\)</span>，那么我们希望找到一个算符<span
+class="math inline">\(U(t,0)\)</span> 使得：</p>
+<p><span class="math display">\[
+∣ψ(t)⟩=U(t,0)∣ψ(0)⟩
+\]</span></p>
+<p>这个<span class="math inline">\(U(t,0)\)</span>
+就称为时间演化算符，它应满足初始条件：</p>
+<p><span class="math display">\[
+U(0,0) = I
+\]</span></p>
+<p>其中<span class="math inline">\(I\)</span>是单位算符。</p>
+<p>将<span class="math inline">\(|\psi(t)\rangle =
+U(t,0)|\psi(0)\rangle\)</span>代入薛定谔方程，我们得到：</p>
+<p><span class="math display">\[
+i\hbar\frac{d}{dt}(U(t,0)|\psi(0)\rangle)=H(t)U(t,0)|\psi(0)\rangle
+\]</span></p>
+<p>由于这个等式对于任意初始状态<span
+class="math inline">\(|\psi(0)\rangle\)</span>都成立，所以 <span
+class="math inline">\(U(t,0)\)</span> 必须满足：</p>
+<p><span class="math display">\[
+i\hbar\frac{d}{dt}U(t,0)=H(t)U(t,0),\quad U(0,0)=I
+\]</span></p>
+<p>我们可以将时间区间[0,t]分割成N个非常短的小区间（每个长度 <span
+class="math inline">\(\Delta t\)</span>很小，且<span
+class="math inline">\(t=N\Delta
+t\)</span>），在每个小区间内近似认为哈密顿量 <span
+class="math inline">\(H(t)\)</span> 变化不大。令 <span
+class="math inline">\(t_j = j\Delta t\)</span>，则在区间 <span
+class="math inline">\([t_j, t_{j+1}]\)</span>内：</p>
+<p><span class="math display">\[
+U(t_{j + 1},t_j) \approx \exp\left[-\frac{i}{\hbar} H(t_j)\Delta
+t\right].
+\]</span></p>
+<p>整个时间演化算符可以写为这些小段演化算符的乘积：</p>
+<p><span class="math display">\[
+U(t,0) = U(t_N,t_{N - 1})U(t_{N - 1},t_{N - 2})\cdots U(t_1,0).
+\]</span></p>
+<p><span class="math display">\[
+U(t,0) = \mathcal{T} \exp\left[-\frac{i}{\hbar} \int_{0}^{t} H(t&#39;)
+dt&#39;\right].
+\]</span></p>
+<p>这一定义展开后可以得到 Dyson 级数：</p>
+<p><span class="math display">\[
+\begin{align*}
+U(t,0) &amp;= I - \frac{i}{\hbar} \int_{0}^{t} dt_1 H(t_1) +
+\left(-\frac{i}{\hbar}\right)^2 \int_{0}^{t} dt_1 \int_{0}^{t_1} dt_2
+H(t_1)H(t_2) + \cdots \\
+&amp;= I + \sum_{n = 1}^{\infty} \left(-\frac{i}{\hbar}\right)^n
+\int_{0}^{t} dt_1 \int_{0}^{t_1} dt_2 \cdots \int_{0}^{t_{n - 1}} dt_n
+H(t_1)H(t_2)\cdots H(t_n).
+\end{align*}
+\]</span></p>
+<p>推导Dyson级数：</p>
+<p>已知</p>
+<p><span class="math display">\[
+i\hbar\frac{d}{dt}|\psi(t)\rangle = H(t)|\psi(t)\rangle.
+\]</span></p>
+<p><span class="math display">\[
+|\psi(t)\rangle = U(t,0)|\psi(0)\rangle
+\]</span></p>
+<p><span class="math display">\[
+i\hbar\frac{d}{dt}U(t,0) = H(t)U(t,0),\quad U(0,0) = I.
+\]</span></p>
+<p><span class="math display">\[
+\frac{d}{dt}U(t,0)=-\frac{i}{\hbar}H(t)U(t,0)
+\]</span></p>
+<p>积分得到</p>
+<p><span class="math display">\[
+U(t,0)=I - \frac{i}{\hbar} \int_{0}^{t} H(t_1)U(t_1,0)dt_1
+\]</span></p>
+<p>其中<span
+class="math inline">\(U(t_1,0)\)</span>本身也是未知的。接下来使用迭代方法，将
+<span
+class="math inline">\(U(t_1,0)\)</span>用相同的表达式代入。首先写出第一次迭代：</p>
+<p><span class="math display">\[
+U(t_1,0)=I - \frac{i}{\hbar} \int_{0}^{t_1} H(t_2)U(t_2,0)dt_2
+\]</span></p>
+<p>将这个表达式代入到<span
+class="math inline">\(U(t,0)\)</span>的积分式中，我们有</p>
+<p><span class="math display">\[
+\begin{align*}
+U(t,0)&amp;=I - \frac{i}{\hbar} \int_{0}^{t} H(t_1)\left[I -
+\frac{i}{\hbar} \int_{0}^{t_1} H(t_2)U(t_2,0)dt_2\right]dt_1\\
+&amp;=I - \frac{i}{\hbar} \int_{0}^{t}
+H(t_1)dt_1+\left(-\frac{i}{\hbar}\right)^2 \int_{0}^{t}
+dt_1\int_{0}^{t_1} H(t_1)H(t_2)U(t_2,0)dt_2
+\end{align*}
+\]</span></p>
+<p>同样地，对 <span
+class="math inline">\(U(t_2,0)\)</span>继续进行代入，就得到第二次迭代的结果：</p>
+<p>当我们取极限  <span class="math inline">\(\Delta t\to 0\)</span>
+时，这个乘积就定义了时间演化算符的严格表达式。</p>
+<p>严格地，为了处理不同时刻H(t)之间可能不对易的问题，我们引入<strong>时间排序算符<span
+class="math inline">\(\mathcal{T}\)</span></strong>（Time-ordering
+operator）。其作用是将时间较大的算符放在左边。于是时间演化算符可以写成形式上类似于指数函数的表达：</p>
+<p><span class="math display">\[
+U(t,0) = \mathcal{T} \exp\left[-\frac{i}{\hbar} \int_{0}^{t} H(t&#39;)
+dt&#39;\right].
+\]</span></p>
+<p>这一定义展开后可以得到 Dyson 级数：</p>
+<p><span class="math display">\[
+\begin{align*}
+U(t,0) &amp;= I - \frac{i}{\hbar} \int_{0}^{t} dt_1 H(t_1) +
+\left(-\frac{i}{\hbar}\right)^2 \int_{0}^{t} dt_1 \int_{0}^{t_1} dt_2
+H(t_1)H(t_2) + \cdots \\
+&amp;= I + \sum_{n = 1}^{\infty} \left(-\frac{i}{\hbar}\right)^n
+\int_{0}^{t} dt_1 \int_{0}^{t_1} dt_2 \cdots \int_{0}^{t_{n - 1}} dt_n
+H(t_1)H(t_2)\cdots H(t_n).
+\end{align*}
+\]</span></p>
+<p>推导Dyson级数：</p>
+<p>已知</p>
+<p><span class="math display">\[
+i\hbar\frac{d}{dt}|\psi(t)\rangle = H(t)|\psi(t)\rangle.
+\]</span></p>
+<p><span class="math display">\[
+|\psi(t)\rangle = U(t,0)|\psi(0)\rangle
+\]</span></p>
+<p><span class="math display">\[
+i\hbar\frac{d}{dt}U(t,0) = H(t)U(t,0),\quad U(0,0) = I.
+\]</span></p>
+<p><span class="math display">\[
+\frac{d}{dt}U(t,0)=-\frac{i}{\hbar}H(t)U(t,0)
+\]</span></p>
+<p>积分得到</p>
+<p><span class="math display">\[
+U(t,0)=I - \frac{i}{\hbar} \int_{0}^{t} H(t_1)U(t_1,0)dt_1
+\]</span></p>
+<p>其中<span
+class="math inline">\(U(t_1,0)\)</span>本身也是未知的。接下来使用迭代方法，将
+<span
+class="math inline">\(U(t_1,0)\)</span>用相同的表达式代入。首先写出第一次迭代：</p>
+<p><span class="math display">\[
+U(t_1,0)=I - \frac{i}{\hbar} \int_{0}^{t_1} H(t_2)U(t_2,0)dt_2
+\]</span></p>
+<p>将这个表达式代入到<span
+class="math inline">\(U(t,0)\)</span>的积分式中，我们有</p>
+<p><span class="math display">\[
+\begin{align*}
+U(t,0)&amp;=I - \frac{i}{\hbar} \int_{0}^{t} H(t_1)\left[I -
+\frac{i}{\hbar} \int_{0}^{t_1} H(t_2)U(t_2,0)dt_2\right]dt_1\\
+&amp;=I - \frac{i}{\hbar} \int_{0}^{t}
+H(t_1)dt_1+\left(-\frac{i}{\hbar}\right)^2 \int_{0}^{t}
+dt_1\int_{0}^{t_1} H(t_1)H(t_2)U(t_2,0)dt_2
+\end{align*}
+\]</span></p>
+<p>同样地，对 <span
+class="math inline">\(U(t_2,0)\)</span>继续进行代入，就得到第二次迭代的结果：</p>
+<p><span class="math display">\[
+U(t_2,0)=I - \frac{i}{\hbar} \int_{0}^{t_2} H(t_3)U(t_3,0)dt_3
+\]</span></p>
+<p>代入上式中继续展开，最终我们可以得到无限级数展开，即 Dyson 级数：</p>
+<p><span class="math display">\[
+U(t,0)=I+\sum_{n =
+1}^{\infty}\left(-\frac{i}{\hbar}\right)^n\int_{0}^{t}dt_1\int_{0}^{t_1}dt_2\cdots\int_{0}^{t_{n
+- 1}}dt_nH(t_1)H(t_2)\cdots H(t_n)
+\]</span></p>
+<p>在高频调制（ <span
+class="math inline">\(\Omega\)</span>大）的情况下，我们可以对时间演化算符做展开。令系统的演化算符为</p>
+<p><span class="math display">\[
+U(t,0)=\mathcal{T}\exp\left[-\frac{i}{\hbar}\int_{0}^{t}H(t&#39;)dt&#39;\right]
+\]</span></p>
+<p>根据 Floquet 理论，有</p>
+<p><span class="math display">\[
+U(T,0)=e^{-iH_F T/\hbar},
+\]</span></p>
+<p>其中 <span
+class="math inline">\(H_F\)</span> 为有效（Floquet）哈密顿量。Floquet–Magnus
+展开给出 <span class="math inline">\(H_F\)</span> 的展开式：</p>
+<p><span class="math display">\[
+H_F = H^{(0)}+H^{(1)}+H^{(2)}+\cdots,
+\]</span></p>
+<p>第一项（零阶项）：</p>
+<p><span class="math display">\[
+H^{(0)}=\frac{1}{T}\int_{0}^{T}H(t&#39;)dt’
+\]</span></p>
+<p>即周期内的时间平均哈密顿量。</p>
+<p>第一阶校正：</p>
+<p><span class="math display">\[
+H^{(1)}=\frac{1}{2i\hbar
+T}\int_{0}^{T}dt_1\int_{0}^{t_1}dt_2[H(t_1),H(t_2)]
+\]</span></p>
+<p>若对 Fourier 展开 <span
+class="math inline">\(H(t)=\sum_{n}e^{-in\Omega
+t}H_n\)</span>，则可将<span
+class="math inline">\(H^{(1)}\)</span> 写为：</p>
+<p><span class="math display">\[
+H^{(1)}=\sum_{n\neq0}\frac{[H_{-n},H_{n}]}{n\hbar\Omega}
+\]</span></p>
+<p><span class="math inline">\(H_F\)</span> 可以写成</p>
+<p><span class="math display">\[
+\begin{align*}
+H_F(\boldsymbol{k})&amp;=\sum_{l =
+0}^{\infty}H_F^{(l)}(\boldsymbol{k}),\\
+H_F^{(0)}(\boldsymbol{k})&amp;=H_{0,0}(\boldsymbol{k}),\\
+H_F^{(1)}(\boldsymbol{k})&amp;=\sum_{i\neq0}\frac{[H_{-i}(\boldsymbol{k}),H_{i}(\boldsymbol{k})]}{2i\omega},\\
+H_F^{(2)}(\boldsymbol{k})&amp;=\sum_{i\neq0}\frac{[[H_{-i}(\boldsymbol{k}),H_{0,0}(\boldsymbol{k})],H_{i}(\boldsymbol{k})]}{2i^2\omega^2}+\sum_{i\neq0}\sum_{j\neq0}\frac{[[H_{-i}(\boldsymbol{k}),H_{i
+- j}(\boldsymbol{k})],H_{j}(\boldsymbol{k})]}{3ij\omega^2},\\
+&amp;\vdots
+\end{align*}
+\]</span></p>
+<p>推导为何在 Floquet–Magnus
+展开中，第一阶项会出现对易子形式，这实际上是从求解时间演化算符的微分方程，利用指数形式的
+ansatz 并比较展开式后得到的结果。</p>
+<h2 id="时间演化算符的形式和-magnus-展开">时间演化算符的形式和 Magnus
+展开</h2>
+<p>对于周期性哈密顿量 <span
+class="math inline">\(H(t)=H(t+T)\)</span>，时间演化算符满足</p>
+<p><span class="math display">\[
+U(t,0) = \mathcal{T} \exp\left[-\frac{i}{\hbar} \int_{0}^{t} H(t&#39;)
+dt&#39;\right].
+\]</span></p>
+<p>其中 <span class="math inline">\(\mathcal{T}\)</span>
+表示时间排序。Magnus 提出了一个 ansatz，即可以写为</p>
+<p><span class="math display">\[
+U(t,0)=\exp[\Omega(t)]
+\]</span></p>
+<p>其中 <span
+class="math inline">\(\Omega(t)\)</span>是一个幂级数展开：</p>
+<p><span class="math display">\[
+\Omega(t)=\Omega^{(1)}(t)+\Omega^{(2)}(t)+\Omega^{(3)}(t)+\cdots
+\]</span></p>
+<p>而此处第一项</p>
+<p><span class="math display">\[
+\Omega^{(1)}(t)=-\frac{i}{\hbar}\int_0^t H(t_1)\,dt_1,
+\]</span></p>
+<p>第二项则为</p>
+<p><span class="math display">\[
+\Omega^{(2)}(t)=\frac{1}{2}\left(-\frac{i}{\hbar}\right)^2\int_{0}^{t}dt_1\int_{0}^{t_1}dt_2[H(t_1),H(t_2)]
+\]</span></p>
+<p>由于<span class="math inline">\(H(t)\)</span>
+是时间依赖的，并且对于不同的时刻 <span
+class="math inline">\(t_1\)</span>和 <span
+class="math inline">\(t_2\)</span>， <span
+class="math inline">\(H(t_1)\)</span>和 <span
+class="math inline">\(H(t_2)\)</span>一般不对易（即<span
+class="math inline">\([H(t_1),H(t_2)]\neq0\)</span>），所以在处理非平凡的时间排序时，我们不能简单将积分累加起来，而需要考虑它们的顺序关系。</p>
+<p>在推导过程中，可以考虑将时间演化算符的微分方程写成</p>
+<p><span class="math display">\[
+\frac{d}{dt}U(t,0)=\frac{d}{dt}\exp[\Omega(t)]=\dot{\Omega}(t)\exp[\Omega(t)]
+\]</span></p>
+<p>而另一方面又有</p>
+<p><span class="math display">\[
+\frac{d}{dt}U(t,0)=-\frac{i}{\hbar}H(t)U(t,0)
+\]</span></p>
+<p>将二者比较，我们要求</p>
+<p><span class="math display">\[
+\dot{\Omega}(t)=\exp[-\Omega(t)]\left(-\frac{i}{\hbar}H(t)\right)\exp[\Omega(t)]
+\]</span></p>
+<p>接下来，为了求出 <span
+class="math inline">\(\Omega(t)\)</span>的各阶项，我们将 <span
+class="math inline">\(\Omega(t)\)</span>展开成幂级数，并使用
+Baker-Campbell-Hausdorff 展开式来处理 <span
+class="math inline">\(\exp[-\Omega(t)]H(t)\exp[\Omega(t)]\)</span>的结果。在这一过程中，第二阶项就正好涉及到了
+<span
+class="math inline">\([H(t_1),H(t_2)]\)</span> 的双重积分项，其系数经过计算正好为</p>
+<p><span class="math display">\[
+\Omega^{(2)}(t)=\frac{1}{2}\left(-\frac{i}{\hbar}\right)^2\int_{0}^{t}dt_1\int_{0}^{t_1}dt_2[H(t_1),H(t_2)]
+\]</span></p>
+<p>当考虑 <span class="math inline">\(t=T\)</span>并定义 <span
+class="math inline">\(H^{(1)}\)</span>为第二阶贡献时（也就是有效哈密顿量中第二阶的部分），常写为</p>
+<p><span class="math display">\[
+H^{(1)}=\frac{1}{T}\Omega^{(2)}(T)=\frac{1}{2i\hbar
+T}\int_{0}^{T}dt_1\int_{0}^{t_1}dt_2[H(t_1),H(t_2)]
+\]</span></p>
+<h2 id="时间演化算符的微分方程与-magnus-ansatz">时间演化算符的微分方程与
+Magnus ansatz</h2>
+<p>量子系统的时间演化算符 U(t,0) 满足</p>
+<p><span class="math display">\[
+\frac{d}{dt}U(t,0)=-\frac{i}{\hbar}H(t)U(t,0),\quad U(0,0)=I
+\]</span></p>
+<p>假设 U(t,0) 写成指数形式</p>
+<p><span class="math display">\[
+U(t,0)=\exp[\Omega(t)]
+\]</span></p>
+<p>其中 Ω(t) 是一个矩阵（在一般情况下可能不与 H(t) 对易）。对 U(t,0)
+求导时使用链式法则（以及矩阵指数的微分公式）有</p>
+<p><span class="math display">\[
+\frac{d}{dt}U(t,0)=\frac{d}{dt}\exp[\Omega(t)]=\left(\sum_{k =
+0}^{\infty}\frac{1}{(k +
+1)!}\mathrm{ad}_{\Omega(t)}^k(\dot{\Omega}(t))\right)\exp[\Omega(t)]
+\]</span></p>
+<p>其中 <span class="math inline">\(\mathrm{ad}_{\Omega}(X)= [\Omega,
+X]\)</span>是伴随算符。然而，我们不必展开所有的细节，而是将这一结果写作</p>
+<p><span class="math display">\[
+\frac{d}{dt}\exp[\Omega(t)] = D(t)\exp[\Omega(t)],
+\]</span></p>
+<p>其中 D(t) 是一个级数，其第一项正好是 <span
+class="math inline">\(\dot{\Omega}(t)\)</span>，后续项涉及 <span
+class="math inline">\([\Omega(t),\dot{\Omega}(t)]\)</span>等对易子。另一方面，由微分方程，</p>
+<p><span class="math display">\[
+\frac{d}{dt}U(t,0)=-\frac{i}{\hbar}H(t)\exp[\Omega(t)]
+\]</span></p>
+<p>因此，我们有等式</p>
+<p><span class="math display">\[
+D(t)\exp[\Omega(t)]=-\frac{i}{\hbar}H(t)\exp[\Omega(t)]
+\]</span></p>
+<p>由于 <span
+class="math inline">\(\exp[\Omega(t)]\)</span> 可逆，我们可写成</p>
+<p><span class="math display">\[
+D(t)=-\frac{i}{\hbar}H(t)
+\]</span></p>
+<p>接下来，我们将 Ω(t) 展开为级数并比较同阶项，得到各阶 <span
+class="math inline">\(Ω^{(n)}(t)\)</span> 的表达式。</p>
+<p>对 Ω(t) 取最低阶近似时，假设 Ω(t) 很小，此时我们忽略 Ω(t)
+内部的非对易性（即舍去后续项），那么</p>
+<p><span class="math display">\[
+D(t)\approx\dot{\Omega}^{(1)}(t)
+\]</span></p>
+<p>因此，我们要求</p>
+<p><span class="math display">\[
+\dot{\Omega}^{(1)}(t)=-\frac{i}{\hbar}H(t)
+\]</span></p>
+<p>两边积分得到</p>
+<p><span class="math display">\[
+\Omega^{(1)}(t)=-\frac{i}{\hbar}\int_{0}^{t}H(t_1)dt_1
+\]</span></p>
+<p>这就是第一阶项。直观地讲，这一项只是把哈密顿量在时间内进行积分，相当于时间平均效应的贡献，不涉及不同时间之间的非对易性。</p>
+<p>接下来考虑第二阶项。当我们将 Ω(t) 取到第二阶近似，即写作<span
+class="math inline">\(\Omega(t)=\Omega^{(1)}(t)+\Omega^{(2)}(t)\)</span>，并代入
+U(t,0)=exp[Ω(t)]，再对 U(t,0) 求导时，由
+Baker-Campbell-Hausdorff（BCH）公式可知，会出现如下修正项：</p>
+<p><span class="math display">\[
+\frac{d}{dt}\exp[\Omega(t)]=\dot{\Omega}^{(1)}(t)+\dot{\Omega}^{(2)}(t)+\frac{1}{2}[\Omega^{(1)}(t),\dot{\Omega}^{(1)}(t)]+\mathcal{O}(\Omega^3)
+\]</span></p>
+<p>把这一展开与薛定谔方程右边的表达式 <span
+class="math inline">\(-\frac{i}{\hbar}H(t)\)</span>对应起来，我们有（保留到二阶）：</p>
+<p><span class="math display">\[
+\dot{\Omega}^{(1)}(t)+\dot{\Omega}^{(2)}(t)+\frac{1}{2}[\Omega^{(1)}(t),\dot{\Omega}^{(1)}(t)]=-\frac{i}{\hbar}H(t)
+\]</span></p>
+<p>但第一阶项已经满足 <span
+class="math inline">\(\dot{\Omega}^{(1)}(t)=-\frac{i}{\hbar}H(t)\)</span>。因此，为了使二阶项成立，必须有</p>
+<p><span class="math display">\[
+\dot{\Omega}^{(2)}(t)+\frac{1}{2}[\Omega^{(1)}(t),\dot{\Omega}^{(1)}(t)]
+= 0
+\]</span></p>
+<p>将 <span
+class="math inline">\(\Omega^{(1)}(t)=-\frac{i}{\hbar}\int_0^t
+H(t_1)dt_1\)</span>代入，上式可写为</p>
+<p><span class="math display">\[
+\dot{\Omega}^{(2)}(t)=-\frac{1}{2}[\Omega^{(1)}(t),\dot{\Omega}^{(1)}(t)]=-\frac{1}{2}\left[-\frac{i}{\hbar}\int_{0}^{t}H(t_1)dt_1,-\frac{i}{\hbar}H(t)\right]
+\]</span></p>
+<p>整理后注意到两个负号相乘得正号，并提取系数</p>
+<p><span class="math display">\[
+\dot{\Omega}^{(2)}(t)=\frac{1}{2}\left(\frac{i}{\hbar}\right)^2\left[\int_{0}^{t}H(t_1)dt_1,H(t)\right]
+\]</span></p>
+<p>然后对时间从 0 积分到
+t，注意积分中的时间变量顺序需要保证时间排序（一般写为内层积分上限为外层积分变量），得</p>
+<p><span class="math display">\[
+\Omega^{(2)}(t)=\frac{1}{2}\left(-\frac{i}{\hbar}\right)^2\int_{0}^{t}dt_1\int_{0}^{t_1}dt_2[H(t_1),H(t_2)]
+\]</span></p>
+<p>注意这里符号经过整理后常写成上式。也就是说，第二阶项正好由两个不同时刻的哈密顿量的对易子贡献，而这一项反映了由于
+<span
+class="math inline">\(H(t)\)</span>在不同时间之间不对易所引入的非平凡修正。</p>
+<h2 id="baker-campbell-hausdorff-展开式">Baker-Campbell-Hausdorff
+展开式</h2>
+<p>Baker-Campbell-Hausdorff（简称
+BCH）展开式是一个在处理非对易算子时非常重要的数学公式，它用来表达两个指数算子的乘积
+<span class="math inline">\(e^X
+e^Y\)</span>可以写成单个指数形式，即存在某个算子<span
+class="math inline">\(Z\)</span> 使得</p>
+<p><span class="math display">\[
+e^X e^Y=e^Z
+\]</span></p>
+<p>这个公式给出了<span class="math inline">\(Z\)</span> 关于<span
+class="math inline">\(X\)</span> 和<span
+class="math inline">\(Y\)</span>
+以及它们的交换子（以及更高阶嵌套的对易子）的展开式。一般来说， <span
+class="math inline">\(Z=\log(e^X
+e^Y)\)</span> 可以写成如下级数展开：</p>
+<p><span class="math display">\[
+Z = X + Y+\frac{1}{2}[X,Y]+\frac{1}{12}([X,[X,Y]] -
+[Y,[X,Y]])-\frac{1}{24}[Y,[X,[X,Y]]]+\cdots
+\]</span></p>
+<p>在许多应用中（例如量子力学、Lie 群与 Lie 代数理论、以及时间演化算符的
+Magnus 展开中），我们遇到两个不对易的算子<span
+class="math inline">\(X\)</span> 和<span
+class="math inline">\(Y\)</span> 的指数形式的乘积。由于<span
+class="math inline">\(X\)</span> 和<span
+class="math inline">\(Y\)</span> 一般不对易，简单地把指数相加 <span
+class="math inline">\(e^X e^Y \neq e^{X+Y}\)</span>。BCH
+展开式正是解决这一问题的工具，它将 <span class="math inline">\(e^X
+e^Y\)</span>重新写成一个单指数 <span
+class="math inline">\(e^Z\)</span>的形式，而<span
+class="math inline">\(Z\)</span> 则以<span
+class="math inline">\(X\)</span> 和<span
+class="math inline">\(Y\)</span>以及它们之间的对易子和嵌套对易子的组合形式出现。</p>
+<p>如果<span class="math inline">\(X\)</span> 和<span
+class="math inline">\(Y\)</span>是小量（或在某种渐进极限下），那么取前几项展开就可以近似写出：</p>
+<p><span class="math display">\[
+\log(e^{X}e^{Y})\approx X + Y+\frac{1}{2}[X,Y]
+\]</span></p>
+<p>如果需要更高的精度，就必须包含更高阶的嵌套对易子项。整个 BCH
+展开式实际上是一个无穷级数，其收敛性依赖于<span
+class="math inline">\(X\)</span> 和<span
+class="math inline">\(Y\)</span>的范数以及它们的对易性。</p>
+<h1 id="有效哈密顿量推导">有效哈密顿量推导</h1>
+<h2 id="低能模型">低能模型</h2>
+<p>低能有效哈密顿量模型是用来描述系统低能激发行为的简化模型。通过聚焦于能量较低的态减少计算复杂度。</p>
+<h3
+id="构建低能有效哈密顿量的主要方法">构建低能有效哈密顿量的主要方法：</h3>
+<p>微扰论：当系统的哈密顿量可以表示为已知可解部分和小的扰动之和时，通过对小扰动进行展开，可以得到低能有效哈密顿量。特别地，简并微扰论在处理能级简并的情况下尤为重要。</p>
+<p>k·p方法：通过在布里渊区高对称点（如Γ点）附近展开电子的能量与波矢的关系。</p>
+<p>紧束缚模型：假设电子主要局域于原子或分子轨道，并且仅与邻近的原子或分子发生相互作用的模型。对于如石墨烯等材料，通过紧束缚模型可以推导出其低能有效哈密顿量。</p>
+<h3 id="石墨烯的低能有效哈密顿量">石墨烯的低能有效哈密顿量</h3>
+<p>石墨烯可以通过紧束缚模型进行描述。在布里渊区的K点附近，能量色散关系呈线性，这意味着电子表现得类似于无质量的狄拉克费米子。通过在K点附近对哈密顿量进行展开，可以得到石墨烯的低能有效哈密顿量：</p>
+<p><span class="math display">\[
+H_{\text{eff}} = \hbar v_F (\tau k_x \sigma_x + k_y \sigma_y)
+\]</span></p>
+<p><span class="math inline">\(v_F\)</span>是费米速度，<span
+class="math inline">\(\tau\)</span>表示K点的谷指数。</p>
+<p>加圆偏振光</p>
+]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+</search>
